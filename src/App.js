@@ -11,14 +11,25 @@ function App() {
   //Dejar que el usuario nombre el Blok
   document.title = 'Blok - Easy notes'
 
-  const [noteTitle, setnoteTitle] = useState('');
-  const [nombre, setNombre] = useState('Gaby');
+  
+  //const [noteTitle, setnoteTitle] = useState('');
+  console.log(typeof localStorage.getItem('notasLocal'));
   const [cambiarTitulo, setCambiarTitulo] = useState(0);
-  const [nota, setNota] = useState('');
-  const [listaNotas, setListaNotas] = useState([]);
-
+  const [nombre, setNombre] = useState(
+    localStorage.getItem('user') || 'anónimo'
+  );
+  const [nota, setNota] = useState();
+  const [listaNotas, setListaNotas] = useState(
+    JSON.parse(localStorage.getItem('notasLocal')) || []
+  );
   useEffect(function(){
     //console.log('Se ha actualizado la lista ' + listaNotas)
+    localStorage.setItem('user', nombre);
+   
+  },[nombre])
+  useEffect(function(){
+    //console.log('Se ha actualizado la lista ' + listaNotas)
+    localStorage.setItem('notasLocal', JSON.stringify(listaNotas));
    
   },[listaNotas])
 
@@ -36,9 +47,10 @@ function guardarNota () {
   guardarYBorrar()
   //console.log(listaNotas);
 }
+//let notasParseadas = JSON.parse(listaNotas);
 
 const BlocDeNotas = () => (
-    listaNotas.map(
+  listaNotas.map(
           (el)=> <li key={el + Math.random()}>{el}</li>
           )
     
