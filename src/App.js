@@ -18,19 +18,20 @@ function App() {
   const [nombre, setNombre] = useState(
     localStorage.getItem('user') || 'anónimo'
   );
-  const [nota, setNota] = useState();
+  const [nota, setNota] = useState('');
   const [listaNotas, setListaNotas] = useState(
     JSON.parse(localStorage.getItem('notasLocal')) || []
   );
   useEffect(function(){
     //console.log('Se ha actualizado la lista ' + listaNotas)
     localStorage.setItem('user', nombre);
+    
    
   },[nombre])
   useEffect(function(){
     //console.log('Se ha actualizado la lista ' + listaNotas)
     localStorage.setItem('notasLocal', JSON.stringify(listaNotas));
-   
+    setNota('');
   },[listaNotas])
 
 const changeTitleHandler = () => (
@@ -43,7 +44,7 @@ function escribirNota (event) {
 }
 
 function guardarNota () {
-  let guardarYBorrar = () => setListaNotas([...listaNotas, nota]) + setNota('')
+  let guardarYBorrar = () => setListaNotas([...listaNotas, nota])
   guardarYBorrar()
   //console.log(listaNotas);
 }
