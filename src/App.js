@@ -23,15 +23,15 @@ function App() {
     JSON.parse(localStorage.getItem('notasLocal')) || []
   );
   useEffect(function(){
-    //console.log('Se ha actualizado la lista ' + listaNotas)
+    
     localStorage.setItem('user', nombre);
     
    
   },[nombre])
   useEffect(function(){
-    //console.log('Se ha actualizado la lista ' + listaNotas)
+    
     localStorage.setItem('notasLocal', JSON.stringify(listaNotas));
-    setNota('');
+    
   },[listaNotas])
 
 const changeTitleHandler = () => (
@@ -44,11 +44,9 @@ function escribirNota (event) {
 }
 
 function guardarNota () {
-  let guardarYBorrar = () => setListaNotas([...listaNotas, nota])
-  guardarYBorrar()
-  //console.log(listaNotas);
+  setListaNotas([...listaNotas, nota])
 }
-//let notasParseadas = JSON.parse(listaNotas);
+
 
 const BlocDeNotas = () => (
   listaNotas.map(
@@ -56,30 +54,7 @@ const BlocDeNotas = () => (
           )
     
     )
-//PARTE DEL TUTORIAL DE LocalStorage
-    
-  /*  const Storage = () => {
-      const [value, setValue] = React.useState(
-        localStorage.getItem('myValueInLocalStorage') || ''
-      );
- 
-  React.useEffect(() => {
-    localStorage.setItem('myValueInLocalStorage', value);
-  }, [value]);
- 
-  const onChange = event => setValue(event.target.value);
- 
-  return (
-        <div>
-         
-     
-          <input value={value} type="text" onChange={onChange.bind(this)} />
-     
-          <p>{value}</p>
-        </div>
-      );
-    };
-  */ 
+
   
  function enter(e){
     if(e.keyCode === 13){
@@ -103,7 +78,6 @@ const BlocDeNotas = () => (
         <BlocDeNotas />
        </ul>
        </div>
-     {/*<Storage />*/}
      </div>
   );
 
