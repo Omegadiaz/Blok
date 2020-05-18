@@ -31,7 +31,7 @@ function App() {
   useEffect(function(){
     
     localStorage.setItem('notasLocal', JSON.stringify(listaNotas));
-    
+    setNota('')
   },[listaNotas])
 
 const changeTitleHandler = () => (
