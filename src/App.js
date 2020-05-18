@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import Title from './Components/Tittle';
@@ -14,8 +14,8 @@ function App() {
   
   //const [noteTitle, setnoteTitle] = useState('');
   console.log(typeof localStorage.getItem('notasLocal'));
-  const [cambiarTitulo, setCambiarTitulo] = useState(0);
-  const [nombre, setNombre] = useState(
+  const [setCambiarTitulo] = useState(0);
+  const [nombre] = useState(
     localStorage.getItem('user') || 'anónimo'
   );
   const [nota, setNota] = useState('');
@@ -64,7 +64,7 @@ const BlocDeNotas = () => (
 
   return (
     <div className="container">
-    <h1><a href="#"><span className="badge badge-secondary" style={{marginRight:'0.3em'}}>Blok</span></a><span style={{fontSize: '0.7em'}}>de {nombre}</span></h1>
+    <h1><a href="/#"><span className="badge badge-secondary" style={{marginRight:'0.3em'}}>Blok</span></a><span style={{fontSize: '0.7em'}}>de {nombre}</span></h1>
      <Title clicked={changeTitleHandler} title="Prueba de título" />
      <div>
      <NoteBody escribiendo={escribirNota.bind(this)} pulsarenter={enter.bind(this)} value={nota}
