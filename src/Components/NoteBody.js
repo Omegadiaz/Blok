@@ -7,7 +7,7 @@ const NoteBody = (props) => (
     
     style={{
         height: '15em',
-        width: '25em',
+        width: '80%',
         margin: '10px',
         border: '1px solid grey'
 

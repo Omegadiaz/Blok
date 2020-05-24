@@ -63,9 +63,13 @@ const BlocDeNotas = () => (
   }
 
   return (
-    <div className="container">
-    <h1><a href="/#"><span className="badge badge-secondary" style={{marginRight:'0.3em'}}>Blok</span></a><span style={{fontSize: '0.7em'}}>de {nombre}</span></h1>
-     <Title clicked={changeTitleHandler} title="Prueba de título" />
+    <div className="App">
+    <div className="App-header">
+        <a href="/#"><span className="badge badge-secondary">Blok</span></a>
+          <span className="userName">de {nombre}</span>
+    </div>
+
+     <Title title="Prueba de título" />
      <div>
      <NoteBody escribiendo={escribirNota.bind(this)} pulsarenter={enter.bind(this)} value={nota}
      />
@@ -73,8 +77,8 @@ const BlocDeNotas = () => (
      </div>
      <button className="btn btn-primary" onClick={guardarNota} style={{marginRight: '0.6em',width:'100px'}}>Guardar</button>
      <button className="btn btn-primary" onClick={() => setListaNotas([])} style={{width:'100px'}}>Limpiar</button>
-     <div style={{marginTop:'1em'}}><label>Mis notas:</label>
-       <ul className="list-unstyled" style={{marginTop: '2em'}}>
+     <div style={{marginTop:'1em', textAlign: 'center'}}><label>Mis notas:</label>
+       <ul className="list-unstyled" style={{marginTop: '2em', textAlign: 'left', marginLeft: '10%'}}>
         <BlocDeNotas />
        </ul>
        </div>
